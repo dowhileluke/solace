@@ -5,6 +5,7 @@ import { useAdvocates } from '../hooks/use-advocates'
 import { AdvocateQueryForm } from '@/components/advocate-query-form'
 import { AdvocateQuery } from '@/types'
 import { toRankedAdvocates } from '../functions/to-ranked-advocates'
+import { AdvocateTable } from '@/components/advocate-table'
 
 const emptyQuery: AdvocateQuery = {
   textQuery: '',
@@ -21,45 +22,14 @@ export default function Home() {
   )
 
   return (
-    <main style={{ margin: "24px" }}>
-      <h1>Solace Advocates</h1>
-      <br />
+    <main className="mx-auto max-w-5xl">
+      <h1 className="text-4xl">Solace Advocates</h1>
       <br />
       <AdvocateQueryForm onSubmit={setQuery} />
       <br />
+      <div>{isLoading ? 'Pending' : rankedAdvocates.length} result(s)</div>
       <br />
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>City</th>
-            <th>Degree</th>
-            <th>Specialties</th>
-            <th>Years of Experience</th>
-            <th>Phone Number</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rankedAdvocates.map((advocate) => {
-            return (
-              <tr key={advocate.phoneNumber}>
-                <td>{advocate.firstName}</td>
-                <td>{advocate.lastName}</td>
-                <td>{advocate.city}</td>
-                <td>{advocate.degree}</td>
-                <td>
-                  {advocate.specialties.map((s) => (
-                    <div key={s}>{s}</div>
-                  ))}
-                </td>
-                <td>{advocate.yearsOfExperience}</td>
-                <td>{advocate.phoneNumber}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <AdvocateTable list={rankedAdvocates} />
     </main>
   );
 }

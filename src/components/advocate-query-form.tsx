@@ -34,12 +34,14 @@ export function AdvocateQueryForm({ onSubmit }: AdvocateQueryFormProps) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input value={textQuery} onChange={handleTextChange} />
-			<select value={yoeIndex} onChange={handleYoeChange}>
+		<form onSubmit={handleSubmit} className="flex p-4 gap-4 bg-white border border-brand rounded-lg">
+			<input value={textQuery} onChange={handleTextChange} placeholder="Search terms" className="border border-theme rounded-lg p-2" />
+			<select value={yoeIndex} onChange={handleYoeChange} className="border border-theme rounded-lg p-2">
 				{yoeOptions}
 			</select>
-			<button type="submit">Search</button>
+			<button type="submit" className="bg-brand text-white rounded-lg py-2 px-4">
+				Search
+			</button>
 		</form>
 	)
 }
