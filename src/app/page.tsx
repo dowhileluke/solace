@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from 'react'
-import { useAdvocates } from './hooks/use-advocates'
+import { useAdvocates } from '../hooks/use-advocates'
 import { AdvocateQueryForm } from '@/components/advocate-query-form'
 import { AdvocateQuery } from '@/types'
-import { toRankedAdvocates } from './functions/to-ranked-advocates'
+import { toRankedAdvocates } from '../functions/to-ranked-advocates'
 
 const emptyQuery: AdvocateQuery = {
   textQuery: '',

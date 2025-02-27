@@ -17,7 +17,7 @@ export function toRankedAdvocates(advocates: Advocate[], query: AdvocateQuery) {
 	const maxYoe = query.maxYoe ?? Infinity
 	
 	for (const advocate of advocates) {
-		if (minYoe <= advocate.yearsOfExperience || advocate.yearsOfExperience <= maxYoe) {
+		if (minYoe <= advocate.yearsOfExperience && advocate.yearsOfExperience <= maxYoe) {
 			let score = 0
 
 			for (const t of tokens) {
